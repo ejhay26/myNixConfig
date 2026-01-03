@@ -1,5 +1,6 @@
 { config, lib, pkgs, ... }:
 {
+  # ========== DATABASE ==========
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
@@ -9,7 +10,14 @@
     };
   };
 
+  # ========== UDEV RULES ==========
   services.udev.extraRules = ''
     KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"
   '';
+
+  # ========== PRINTING ==========
+  # services.printing.enable = true;
+
+  # ========== SSH DAEMON ==========
+  # services.openssh.enable = true;
 }

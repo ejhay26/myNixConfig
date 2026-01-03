@@ -29,7 +29,7 @@
     vesktop
     qbittorrent
   ] ++ [
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
-    inputs.kwin-effects-glass.packages.${pkgs.system}.default
+    inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

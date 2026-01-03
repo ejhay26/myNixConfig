@@ -11,13 +11,13 @@
 
 	programs.git = {
     enable = true;
-    userName = "ejhay26";
-    userEmail = "ejperez623@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "ejhay26";
+      user.email = "ejperez623@gmail.com";
       init.defaultBranch = "main";
       # Optional: helps with GitHub authentication if you use the 'gh' CLI
       # credential.helper = "store";
-		};
+    };
 	};
 
 # 	programs.fastfetch = {
