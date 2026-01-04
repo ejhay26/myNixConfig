@@ -4,5 +4,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "kvm" "adbusers" "input" ];
     packages = with pkgs; [ tree ];
+    shell = pkgs.zsh;
   };
 }

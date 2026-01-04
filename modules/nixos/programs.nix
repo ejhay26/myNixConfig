@@ -7,6 +7,8 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
+  programs.zsh.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "ventoy-1.1.05" ];
 
