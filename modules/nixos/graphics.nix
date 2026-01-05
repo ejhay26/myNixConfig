@@ -9,4 +9,5 @@
       libvdpau-va-gl
     ];
   };
+  hardware.enableRedistributableFirmware = true;
 }

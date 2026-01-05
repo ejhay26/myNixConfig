@@ -2,7 +2,7 @@
 {
   users.users.terajaki = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "kvm" "adbusers" "input" ];
+    extraGroups = [ "wheel" "libvirtd" "kvm" "adbusers" "input" "video" ];
     packages = with pkgs; [ tree ];
     shell = pkgs.zsh;
   };
