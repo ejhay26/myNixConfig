@@ -19,4 +19,15 @@
   '';
   boot.supportedFilesystems = [ "ntfs" "exfat" ];
   boot.kernelModules = [ "usb_storage" "uas" "sd_mod" "sg" ];
+
+  # Enable Plymouth for boot splash screen
+  boot.plymouth = {
+    enable = true;
+    theme = "spinfinity"; #bgrt is the default theme
+    themePackages = with pkgs; [
+      # By default we only have the themes in the plymouth package.
+      # You can add other packages here.
+      adi1090x-plymouth-themes
+    ];
+  };
 }

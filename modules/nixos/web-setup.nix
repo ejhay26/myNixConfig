@@ -4,7 +4,7 @@
   systemd.tmpfiles.rules = [
     "d /var/www 0755 terajaki users -"
     "d /var/www/html 0755 terajaki users -"
-    # Ensure storage directory structure exists for login app
+    # Ensure storage directory structure exists for login web app
     "d /var/www/html/login/storage 0777 terajaki users -"
     "d /var/www/html/login/storage/students 0777 terajaki users -"
     "d /home/terajaki/Documents/www 0755 terajaki users -"

@@ -2,6 +2,7 @@
 {
   imports = [
     ./development.nix
+    ./databases.nix
     ./multimedia.nix
     ./gaming.nix
     ./web.nix

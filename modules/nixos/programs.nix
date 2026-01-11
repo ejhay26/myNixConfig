@@ -2,7 +2,7 @@
 {
   programs.firefox.enable = false;
   programs.kdeconnect.enable = true;
-  programs.adb.enable = true;
+  # programs.adb.enable = true; this is removed
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -14,11 +14,11 @@
 
   services.flatpak.enable = true;
 
-  # steam
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-  };
+  # # steam
+  # programs.steam = {
+  #   enable = true;
+  #   gamescopeSession.enable = true;
+  # };
   programs.gamemode.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

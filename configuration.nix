@@ -38,14 +38,18 @@
     # GPU drivers, 32-bit support, VDPAU
     ./modules/nixos/graphics.nix
 
+    # ========== HARDWARE ==========
+    # Bluetooth support
+    ./modules/nixos/bluetooth.nix
+
     # ========== SYSTEM PROGRAMS ==========
     # Firefox, direnv, Flatpak, nixpkgs config
     ./modules/nixos/programs.nix
 
     # ========== SERVICES ==========
-    # System services (MySQL/MariaDB, udev rules)
+    # System services (Databases, udev rules)
     ./modules/nixos/services
-
+      
     # ========== PACKAGES ==========
     # System packages organized by category (development, multimedia, etc.)
     ./modules/nixos/packages

@@ -22,12 +22,15 @@
     ngrok
     samba
     gnirehtet
-    guitarix
+    # guitarix
     kde-rounded-corners
     kdePackages.krdp
     mapscii
     vesktop
+    telegram-desktop
     qbittorrent
+    easyeffects
+    inkscape
   ] ++ [
     inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default
