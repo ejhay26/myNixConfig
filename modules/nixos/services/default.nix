@@ -1,9 +1,5 @@
 { config, lib, pkgs, ... }:
 {
-  # Bluetooth manager (GUI)
-  # Provides a system tray icon and manager to pair devices
-  services.blueman.enable = true;
-  
   # ========== DATABASE ==========
   # MySQL / MariaDB
   services.mysql = {
@@ -21,6 +17,18 @@
     package = pkgs.mongodb-ce; #mongodb is not pre-compiled
     bind_ip = "127.0.0.1";
   };
+
+  # PostgreSQL
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    initialScript = pkgs.writeText "initial-script" ''
+      CREATE ROLE ${config.users.users.terajaki.name} WITH LOGIN SUPERUSER;
+    '';
+  };
+
+  # Redis
+  services.redis.servers."".enable = true;
 
   # ========== UDEV RULES ==========
   services.udev.extraRules = ''

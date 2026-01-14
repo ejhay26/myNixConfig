@@ -7,6 +7,7 @@
     vivaldi
     fastfetch
     vscode-fhs
+    mongodb-compass
     libreoffice-qt6-fresh
     ttyper
     ani-cli
