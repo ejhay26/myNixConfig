@@ -5,6 +5,7 @@
     git
     brave
     vivaldi
+    librewolf
     fastfetch
     vscode-fhs
     mongodb-compass
@@ -30,6 +31,7 @@
     vesktop
     telegram-desktop
     qbittorrent
+    protonvpn-gui
     easyeffects
     inkscape
   ] ++ [
