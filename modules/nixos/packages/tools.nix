@@ -8,6 +8,7 @@
     librewolf
     fastfetch
     vscode-fhs
+    figma-linux
     mongodb-compass
     libreoffice-qt6-fresh
     ttyper
@@ -15,6 +16,8 @@
     mov-cli
     dotool
     scrcpy
+    libdbusmenu
+    libdbusmenu-gtk3
     gparted
     exfatprogs
     ntfs3g
@@ -28,6 +31,7 @@
     kde-rounded-corners
     kdePackages.krdp
     mapscii
+    browsh
     vesktop
     telegram-desktop
     qbittorrent

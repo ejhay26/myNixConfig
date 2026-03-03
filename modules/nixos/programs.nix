@@ -14,7 +14,7 @@
 
   services.flatpak.enable = true;
 
-  # # steam
+  # steam
   # programs.steam = {
   #   enable = true;
   #   gamescopeSession.enable = true;

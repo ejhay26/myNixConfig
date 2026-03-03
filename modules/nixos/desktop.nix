@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   # ========== TIMEZONE & LOCALIZATION ==========
   time.timeZone = "Asia/Manila";
@@ -22,4 +22,10 @@
   services.displayManager.sddm.enable = true;
 
   services.getty.autologinUser = null;
+  
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+  };
+
 }

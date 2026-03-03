@@ -1,5 +1,24 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, lib,... }:
 
+let
+  # Script to toggle a window to/from the special "minimized" workspace
+  minimize-script = pkgs.writeShellScriptBin "minimize" ''
+    #!/usr/bin/env bash
+    # Get the address of the active window
+    active_window_address=$(hyprctl activewindow -j | jq -r '.address')
+
+    # Find if there's a window on the special workspace
+    special_window_address=$(hyprctl clients -j | jq -r '.[] | select(.workspace.name == "special:minimized") | .address' | head -n 1)
+
+    if [[ "$active_window_address" == "$special_window_address" ]]; then
+      # If the active window is the one on the special workspace, "unminimize" it
+      hyprctl dispatch movetoworkspace e+0
+    elif [[ -n "$active_window_address" ]]; then
+      # Otherwise, "minimize" the current active window
+      hyprctl dispatch movetoworkspacesilent special:minimized
+    fi
+  '';
+in
 
 {
 	home.username = "terajaki";
@@ -24,6 +43,11 @@
 		'';
 	};
 
+	home.shellAliases  = {
+    nrs = "sudo nixos-rebuild switch";
+    gs = "git status";
+  };
+
 	programs.git = {
     enable = true;
     settings = {
@@ -37,6 +61,12 @@
 
 	home.packages = with pkgs; [
 		kdePackages.applet-window-buttons6
+		minimize-script
+
+	# for waybar
+		lexend              # Required by that specific config
+  		jetbrains-mono      # Required font
+  		nerd-fonts.jetbrains-mono # Or your preferred Nerd Font
 	];
 
 # 	programs.fastfetch = {
@@ -65,4 +95,30 @@
 #     };
 #   };
 
+	wayland.windowManager.hyprland = {
+    enable = true;
+    # Use the flake package
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    
+    # This is the option that was missing in NixOS!
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
+
+    # Since you are currently symlinking your config, 
+    # you can keep using the symlink or move the settings here.
+
+	# this avoids warning with config files not being checked
+	extraConfig = lib.mkForce "";
+  	};
+
+	xdg.configFile."hypr/hyprland.conf".enable = false;
+	home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/hyprland";
+
+	# Waybar 
+	programs.waybar.enable = true;
+	
+	# waybar by someone
+home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar";
 }

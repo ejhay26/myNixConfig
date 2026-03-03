@@ -8,6 +8,7 @@
     ./web.nix
     ./tools.nix
     ./graphics-libs.nix
+    ./hyprland-packages.nix
   ];
 
   fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];

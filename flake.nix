@@ -14,6 +14,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     kwin-effects-forceblur = {
       url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +36,7 @@
   };
 
   # Added 'nur' to the arguments below so it's accessible in the modules
-  outputs = { self, nixpkgs, home-manager, nur, kwin-effects-forceblur, kwin-effects-glass, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, kwin-effects-forceblur, kwin-effects-glass, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
