@@ -32,7 +32,8 @@
     kdePackages.krdp
     mapscii
     browsh
-    vesktop
+    # vesktop = this is the modified discord
+    discord
     telegram-desktop
     qbittorrent
     protonvpn-gui

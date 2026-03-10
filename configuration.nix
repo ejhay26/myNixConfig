@@ -60,5 +60,5 @@
   ];
 
   # System state version (don't change unless upgrading NixOS)
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

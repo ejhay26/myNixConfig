@@ -23,7 +23,7 @@
         slurp
         swappy
         # mako = this is for notification, but I have quickshell
-        dunst
+#         dunst
         brightnessctl
         pamixer
         playerctl
