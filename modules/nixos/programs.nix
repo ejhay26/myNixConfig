@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  programs.firefox.enable = false;
+  programs.firefox.enable = true;
   programs.kdeconnect.enable = true;
   # programs.adb.enable = true; this is removed
 
@@ -26,6 +26,8 @@
   # Performance settings for faster builds
   nix.settings.max-jobs = 4;  # Number of parallel build jobs (adjust based on CPU cores)
   nix.settings.cores = 0;     # 0 = use all available cores per job
+  nix.settings.download-buffer-size = 524288000; # 500 MB
+
 
   # Add fast binary cache (Cachix community cache)
   nix.settings.trusted-substituters = [

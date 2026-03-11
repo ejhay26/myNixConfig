@@ -16,7 +16,6 @@
     enableAutosuggestions = true;
   };
 
-  # You need to tell NixOS to actually use Zsh for your user
   users.users.terajaki.shell = pkgs.zsh;
 
   # This makes sure the "Arrow" symbols display correctly instead of boxes

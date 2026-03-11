@@ -18,7 +18,7 @@ else
         (
             while true; do
                 echo 'key w'
-                sleep 4
+                sleep 360
             done | dotool
         ) # $MARKER
     " &

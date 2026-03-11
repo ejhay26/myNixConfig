@@ -28,4 +28,18 @@
     enable = true;
   };
 
+  # Enable the XDG Desktop Portal
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland # Handles screen sharing for Hyprland
+      pkgs.xdg-desktop-portal-gtk      # Useful for file pickers and some fallback
+    ];
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [ "hyprland" "gtk" ];
+      kde.default = [ "kde" ];
+    };
+  };
+
 }
