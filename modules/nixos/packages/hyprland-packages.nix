@@ -16,24 +16,26 @@
 
         # Utilities
         wl-clipboard
+        cliphist
         xdg-utils
         jq
         # hyprexpo = this is already defined in home.nix
-        grim
+        grim # screenshot utility
         slurp
-        swappy
+        swappy # screenshot editor
         # mako = this is for notification, but I have quickshell
 #         dunst
         brightnessctl
         pamixer
+        pavucontrol
         playerctl
         networkmanagerapplet
-        swww
-        hyprshot
+        swww # for desktop wallpaper
+        hyprshot # screenshot utility
 
         # Applications
         kitty
-        nwg-displays
+        nwg-displays # manage monitors
     ];
 }
 

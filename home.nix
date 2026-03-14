@@ -59,6 +59,14 @@ in
 };
 	};
 
+	programs.rofi = {
+		enable = true;
+		plugins = [
+			pkgs.rofi-emoji
+			pkgs.rofi-calc
+		];
+	};
+
 	home.packages = with pkgs; [
 		kdePackages.applet-window-buttons6
 		minimize-script
@@ -114,11 +122,21 @@ in
   	};
 
 	xdg.configFile."hypr/hyprland.conf".enable = false;
+
+	# Linking modules to system
+
+	# Hyprland config link
 	home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/hyprland";
 
 	# Waybar 
 	programs.waybar.enable = true;
 	
 	# waybar by someone
-home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar";
+	home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar";
+
+	# quickshell link
+	home.file.".config/quickshell".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/Quickshell";
+
+	# kitty terminal link
+	home.file.".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/kitty_config";
 }
