@@ -14,6 +14,7 @@
     ttyper
     ani-cli
     mov-cli
+    fzf
     dotool
     scrcpy
     libdbusmenu
@@ -39,8 +40,12 @@
     protonvpn-gui
     easyeffects
     inkscape
+
+
   ] ++ [
     inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.openclaw.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.noctalia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -28,6 +28,8 @@
     enable = true;
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Enable the XDG Desktop Portal
   xdg.portal = {
     enable = true;

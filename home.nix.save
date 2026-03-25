@@ -71,15 +71,10 @@ in
 		kdePackages.applet-window-buttons6
 		minimize-script
 
-		# Noctalia Shell from flake input
-		# If the package attr differs, adjust accordingly (e.g. .noctalia-shell)
-		inputs.noctalia-shell.packages.${pkgs.system}.default
-
 	# for waybar
 		lexend              # Required by that specific config
   		jetbrains-mono      # Required font
   		nerd-fonts.jetbrains-mono # Or your preferred Nerd Font
-#               inputs.caelestia-shell.packages.${pkgs.system}.default
 	];
 
 # 	programs.fastfetch = {
@@ -122,25 +117,22 @@ in
     # Since you are currently symlinking your config, 
     # you can keep using the symlink or move the settings here.
 
-	# this avoids warning with config files not being checked
-	extraConfig = lib.mkForce "";
+#	extraConfig = lib.mkForce "";
+	extraConfig = builtins.readFile "${config.home.homeDirectory}/nixos/modules/home/hyprland/hyprland.conf";
   	};
 
-	xdg.configFile."hypr/hyprland.conf".enable = false;
+ 	xdg.configFile."hypr/hyprland.conf".enable = false;
 
 	# Linking modules to system
 
 	# Hyprland config link
-	home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/hyprland";
+ 	home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/hyprland";
 
-	# Waybar 
+	# Waybar
 	programs.waybar.enable = true;
 	
 	# waybar by someone
 	home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar";
-
-	# waybar by me
-	home.file.".config/waybar2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar2";
 
 	# quickshell link
 	home.file.".config/quickshell".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/Quickshell";

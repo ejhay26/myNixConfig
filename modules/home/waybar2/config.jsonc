@@ -1,0 +1,71 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 8,
+    "reload_style_on_change": true,
+
+    "modules-left": ["custom/os", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["mpris", "clock"],
+    "modules-right": ["cpu", "memory", "network", "pulseaudio", "battery", "tray"],
+
+    "custom/os": {
+        "format": "ICON\n<span size='x-small' color='#a0a0a0'>Menu</span>",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "",
+        "on-click": "activate"
+    },
+
+    "hyprland/window": {
+        "format": "{title}\n<span size='x-small' color='#a0a0a0'>{class}</span>",
+        "max-length": 40,
+        "separate-outputs": true
+    },
+
+    "mpris": {
+        "format": "ICON {title}\n<span size='x-small' color='#a0a0a0'>{player}</span>",
+        "max-length": 30
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p}\n<span size='x-small' color='#a0a0a0'>{:%m-%d-%Y}</span>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "ICON\n<span size='x-small' color='#a0a0a0'>{usage}%</span>"
+    },
+
+    "memory": {
+        "format": "ICON\n<span size='x-small' color='#a0a0a0'>{used:0.1f}G</span>"
+    },
+
+    "network": {
+        "format-wifi": "ICON\n<span size='x-small' color='#a0a0a0'>{bandwidthDownBytes}</span>",
+        "format-ethernet": "ICON\n<span size='x-small' color='#a0a0a0'>LAN</span>",
+        "format-disconnected": "ICON\n<span size='x-small' color='#a0a0a0'>Off</span>",
+        "interval": 2
+    },
+
+    "pulseaudio": {
+        "format": "ICON\n<span size='x-small' color='#a0a0a0'>{volume}%</span>",
+        "format-muted": "ICON\n<span size='x-small' color='#a0a0a0'>Muted</span>",
+        "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "ICON\n<span size='x-small' color='#a0a0a0'>{capacity}%</span>"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}

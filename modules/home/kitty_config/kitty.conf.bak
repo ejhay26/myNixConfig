@@ -5,8 +5,8 @@ dynamic_background_opacity yes
 
 # Slightly lighter background color for better visibility with transparency
 # Adjusting from pure black to a deep charcoal/grey
-# background #1e1e2e 
-# foreground #cdd6f4
+background #1e1e2e 
+foreground #cdd6f4
 
 # --- Transparency Control ---
 # Use these shortcuts to change opacity dynamically:
@@ -23,28 +23,28 @@ confirm_os_window_close 0
 
 # --- Lighter Color Palette ---
 # Brightening up the standard terminal colors slightly
-# color0  #45475a
-# color8  #585b70
+color0  #45475a
+color8  #585b70
 
 # Red
-# color1  #f38ba8
-# color9  #f38ba8
+color1  #f38ba8
+color9  #f38ba8
 
 # Green
-# color2  #a6e3a1
-# color10 #a6e3a1
+color2  #a6e3a1
+color10 #a6e3a1
 
 # Yellow
-# color3  #f9e2af
-# color11 #f9e2af
+color3  #f9e2af
+color11 #f9e2af
 
 # Blue
-# color4  #89b4fa
-# color12 #89b4fa
+color4  #89b4fa
+color12 #89b4fa
 
 # Cursor
-# cursor	#89b4fa
-# cursor_text_color #11111b
+cursor	#89b4fa
+cursor_text_color #11111b
 cursor_trail 5
 cursor_trail_decay 0.05 0.15
 cursor_trail_start_threshold 1
@@ -60,15 +60,9 @@ listen_on unix:/tmp/mykitty
 enabled_layouts tall, stack, grid
 map ctrl+shift+z toggle_layout stack
 map ctrl+shift+e open_url_with_hints
-# url_color #89b4fa
+url_color #89b4fa
 url_style curly
 
 enable_audio_bell no
 visual_bell_duration 0.1
-# visual_bell_color #313244
-
-
-# BEGIN_KITTY_THEME
-# Noctalia
-include current-theme.conf
-# END_KITTY_THEME
+visual_bell_color #313244
