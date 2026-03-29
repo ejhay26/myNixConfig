@@ -48,6 +48,14 @@ in
     gs = "git status";
   };
 
+	home.pointerCursor = {
+		gtk.enable = true;
+		# x11.enable = true; # Uncomment if you use XWayland apps
+		package = pkgs.bibata-cursors;
+		name = "Bibata-Modern-Classic";
+		size = 24;
+	};
+
 	programs.git = {
     enable = true;
     settings = {
@@ -68,7 +76,7 @@ in
 	};
 
 	home.packages = with pkgs; [
-		kdePackages.applet-window-buttons6
+		# kdePackages.applet-window-buttons6
 		minimize-script
 
 		# Noctalia Shell from flake input

@@ -6,6 +6,7 @@
   boot.loader.systemd-boot.configurationLimit = 1;
   boot.loader.timeout = 0;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "quiet"
     "splash"

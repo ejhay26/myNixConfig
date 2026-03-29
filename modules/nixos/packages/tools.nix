@@ -15,6 +15,7 @@
     ani-cli
     mov-cli
     fzf
+    yazi
     dotool
     scrcpy
     libdbusmenu
@@ -28,9 +29,9 @@
     ngrok
     samba
     gnirehtet
-    # guitarix
-    kde-rounded-corners
-    kdePackages.krdp
+    guitarix
+    # kde-rounded-corners
+    # kdePackages.krdp
     mapscii
     browsh
     vesktop # = this is the modified discord
@@ -40,11 +41,11 @@
     protonvpn-gui
     easyeffects
     inkscape
-
+    bibata-cursors
 
   ] ++ [
-    inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.kwin-effects-glass.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.openclaw.packages.${pkgs.stdenv.hostPlatform.system}.default
     # inputs.noctalia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

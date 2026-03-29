@@ -24,15 +24,15 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    kwin-effects-forceblur = {
-      url = "github:taj-ny/kwin-effects-forceblur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # kwin-effects-forceblur = {
+    #   url = "github:taj-ny/kwin-effects-forceblur";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    kwin-effects-glass = {
-        url = "github:4v3ngR/kwin-effects-glass";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+    # kwin-effects-glass = {
+    #     url = "github:4v3ngR/kwin-effects-glass";
+    #     inputs.nixpkgs.follows = "nixpkgs";
+    #   };
 
     openclaw = {
       url = "github:openclaw/nix-openclaw";
@@ -48,7 +48,7 @@
 
 
   # Added 'nur' to the arguments below so it's accessible in the modules
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, kwin-effects-forceblur, kwin-effects-glass, openclaw, noctalia-shell, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, , openclaw, noctalia-shell, ... }@inputs: { # kwin-effects-forceblur, # kwin-effects-glass
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
