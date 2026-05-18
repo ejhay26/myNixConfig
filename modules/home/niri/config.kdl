@@ -1,0 +1,13 @@
+// Main entry point
+// Niri supports modularity via the `include` directive!
+
+include "config/autostart.kdl"
+include "config/input.kdl"
+include "config/layout.kdl"
+include "config/animations.kdl"
+include "config/binds.kdl"
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
