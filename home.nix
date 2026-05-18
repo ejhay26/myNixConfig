@@ -18,6 +18,21 @@ let
       hyprctl dispatch movetoworkspacesilent special:minimized
     fi
   '';
+
+  # Script to toggle scrolling layout on the current workspace
+  toggle-scrolling-script = pkgs.writeShellScriptBin "toggle-scrolling" ''
+    #!/usr/bin/env bash
+    # Get the current layout of the active workspace
+    current_layout=$(hyprctl activewindow -j | jq -r '.workspace.layout')
+
+    if [[ "$current_layout" == "scrolling" ]]; then
+      # Switch back to dwindle (default layout)
+      hyprctl dispatch layoutmsg dwindle
+    else
+      # Switch to scrolling layout
+      hyprctl dispatch layoutmsg scrolling
+    fi
+  '';
 in
 
 {
@@ -78,10 +93,11 @@ in
 	home.packages = with pkgs; [
 		# kdePackages.applet-window-buttons6
 		minimize-script
+		toggle-scrolling-script
 
 		# Noctalia Shell from flake input
 		# If the package attr differs, adjust accordingly (e.g. .noctalia-shell)
-		inputs.noctalia-shell.packages.${pkgs.system}.default
+		inputs.noctalia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 	# for waybar
 		lexend              # Required by that specific config
@@ -116,43 +132,54 @@ in
 #     };
 #   };
 
-	wayland.windowManager.hyprland = {
-    enable = true;
-    # Use the flake package
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    
-    # This is the option that was missing in NixOS!
-    plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
-    ];
-
-    # Since you are currently symlinking your config, 
-    # you can keep using the symlink or move the settings here.
-
-	# this avoids warning with config files not being checked
-	extraConfig = lib.mkForce "";
-  	};
-
-	xdg.configFile."hypr/hyprland.conf".enable = false;
+#	wayland.windowManager.hyprland = {
+#    enable = true;
+#    # Use the flake package
+#    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+#    
+#    # This is the option that was missing in NixOS!
+#    plugins = [
+#      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+#      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+#    ];
+#
+#    # Since you are currently symlinking your config, 
+#    # you can keep using the symlink or move the settings here.
+#
+#    #settings = {};
+#
+#    # this avoids warning with config files not being checked
+#    extraConfig = lib.mkForce "";
+#  };
+#
+#	xdg.configFile."hypr/hyprland.conf".enable = false;
 
 	# Linking modules to system
 
-	# Hyprland config link
-	home.file.".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/hyprland";
+	# We group home.file into a single block to dynamically merge the Niri files.
+	home.file = {
+		# Hyprland config link
+		".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/hyprland";
 
-	# Waybar 
+		# waybar by someone
+		".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar";
+
+		# niri config link
+		".config/niri".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/niri";
+
+		# waybar by me
+		".config/waybar2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar2";
+
+		# quickshell link
+		".config/quickshell".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/Quickshell";
+
+		#Noctalia Shell link
+		".config/noctalia".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/noctalia";
+
+		# kitty terminal link
+		".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/kitty_config";
+	};
+
+	# Waybar
 	programs.waybar.enable = true;
-	
-	# waybar by someone
-	home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar";
-
-	# waybar by me
-	home.file.".config/waybar2".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/waybar2";
-
-	# quickshell link
-	home.file.".config/quickshell".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/Quickshell";
-
-	# kitty terminal link
-	home.file.".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/kitty_config";
 }
