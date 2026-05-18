@@ -1,0 +1,49 @@
+prefer-no-csd
+
+output "eDP-1" {
+    scale 1.0
+}
+
+layout {
+    gaps 10
+    center-focused-column "never"
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        off
+    }
+    border {
+        off
+    }
+}
+
+window-rule {
+    default-column-width { proportion 0.95; }
+    focus-ring { off; }
+    geometry-corner-radius 10
+    clip-to-geometry true
+    shadow {
+        on
+        // off
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        // inactive-color "#00000064"
+    }
+    
+    background-effect {
+        blur true
+        noise 0.01
+        saturation 1.2
+        xray false
+    }
+}
+
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}

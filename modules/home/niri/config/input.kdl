@@ -1,0 +1,15 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 0.2
+    }
+    mouse {
+        accel-speed 0.0
+    }
+}

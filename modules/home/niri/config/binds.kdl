@@ -1,0 +1,103 @@
+binds {
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                        Application Launchers                        │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Mod+T { spawn "kitty"; }
+    Mod+E { spawn "dolphin"; }
+    Mod+M { quit; } // Logout / Exit Niri
+
+    Mod+Y { spawn "bash" "-c" "pkill waybar || waybar"; }
+    
+    //Shell commands
+    Mod+U { spawn "bash" "-c" "pkill noctalia-shell || noctalia-shell"; }
+    Mod+Tab { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+W { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+    Mod+Period { spawn "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
+    Mod+Escape { spawn "noctalia-shell" "ipc" "call" "systemMonitor" "toggle"; }
+    Mod+I { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+    
+    Mod+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+    Mod+Shift+U { spawn "toggle-scrolling"; } // Note: U was mapped twice, moved this to Shift+U
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                    Screenshot (Niri Built-ins)                      │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Print { screenshot; }          // Region
+    Shift+Print { screenshot-screen; } // Output / Monitor
+    Ctrl+Print { screenshot-window; }  // Window
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                       Window Management                             │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Mod+Q { close-window; }
+    Mod+F { fullscreen-window; }
+    Mod+Space { toggle-window-floating; }
+    Mod+Grave repeat=false { toggle-overview; }
+
+    // Assuming `minimize` script acts externally.
+    Mod+H { spawn "minimize"; } 
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                Hardware Controls (Brightness & Volume)              │
+    // └─────────────────────────────────────────────────────────────────────┘
+    XF86MonBrightnessUp { spawn "brightnessctl" "s" "10%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "s" "10%-"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "-l" "1.5" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "-l" "1.5" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                      Window Resizing                                │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Mod+Left  { set-column-width "-50"; }
+    Mod+Right { set-column-width "+50"; }
+    Mod+Up    { set-window-height "-50"; }
+    Mod+Down  { set-window-height "+50"; }
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                     Window Movement (Tiled)                         │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Alt+I { move-window-up; }
+    Alt+K { move-window-down; }
+    Alt+J { move-column-left; }
+    Alt+L { move-column-right; }
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │                     Window Focus Switching                          │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Mod+Ctrl+Left  { focus-column-left; }
+    Mod+Ctrl+Right { focus-column-right; }
+    Mod+Ctrl+Up    { focus-window-up; }
+    Mod+Ctrl+Down  { focus-window-down; }
+
+    // ┌─────────────────────────────────────────────────────────────────────┐
+    // │               Workspace Switching & Window Moving                   │
+    // └─────────────────────────────────────────────────────────────────────┘
+    Alt+1 { focus-workspace 1; }
+    Alt+2 { focus-workspace 2; }
+    Alt+3 { focus-workspace 3; }
+    Alt+4 { focus-workspace 4; }
+    
+    Alt+Shift+1 { move-column-to-workspace 1; }
+    Alt+Shift+2 { move-column-to-workspace 2; }
+    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+4 { move-column-to-workspace 4; }
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+overview {
+    zoom 0.65 // Makes the zoomed-out workspaces smaller/larger
+}
