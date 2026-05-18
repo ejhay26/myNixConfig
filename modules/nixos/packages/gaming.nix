@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     wine
-    wineWowPackages.full
+    wineWow64Packages.full
     mangohud
     # protonup
   ];
