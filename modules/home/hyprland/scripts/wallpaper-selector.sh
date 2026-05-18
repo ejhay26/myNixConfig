@@ -9,7 +9,7 @@ SELECTED=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o 
 if [ -n "$SELECTED" ]; then
     # Apply wallpaper with circular expanding animation (outer)
     # --transition-pos 0.5,0.5 centers the circle
-    swww img "$SELECTED" \
+    awww img "$SELECTED" \
         --transition-type outer \
         --transition-pos 0.5,0.5 \
         --transition-step 90 \
