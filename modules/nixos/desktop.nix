@@ -1,3 +1,4 @@
+
 { config, lib, pkgs, inputs, ... }:
 {
   # ========== TIMEZONE & LOCALIZATION ==========
@@ -17,16 +18,32 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # ========== DESKTOP ENVIRONMENT ==========
-  # services.desktopManager.plasma6.enable = true;
-  # services.displayManager.sddm.wayland.enable = true;
-  # services.displayManager.sddm.enable = true;
+
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.enable = true;
 
   services.getty.autologinUser = null;
   
   # Hyprland
   programs.hyprland = {
     enable = true;
+    # Sync the system-wide package with the flake input used in home.nix to prevent installing two versions
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
   };
+
+  # Niri
+  programs.niri = {
+    enable = true;
+    # Use the bleeding-edge flake package for Niri
+    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+  };
+
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -34,7 +51,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland # Handles screen sharing for Hyprland
       pkgs.xdg-desktop-portal-gtk      # Useful for file pickers and some fallback
     ];
     config = {
@@ -44,4 +60,9 @@
     };
   };
 
+  # Set Bibata cursor as system-wide default (for login screen and greeters)
+  environment.variables = {
+    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_SIZE = "24";
+  };
 }
