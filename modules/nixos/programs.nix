@@ -6,6 +6,7 @@
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.gpu-screen-recorder.enable = true;
 
   programs.zsh.enable = true;
 
