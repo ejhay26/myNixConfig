@@ -1,10 +1,7 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
     # packages used by Hyprland
     environment.systemPackages = with pkgs; [
-        # Hyprland compositor
-        hyprland
-
         # shell
         quickshell
 
@@ -30,12 +27,17 @@
         pavucontrol
         playerctl
         networkmanagerapplet
-        swww # for desktop wallpaper
+        awww # for desktop wallpaper
         hyprshot # screenshot utility
 
         # Applications
         kitty
+        alacritty
         nwg-displays # manage monitors
-    ];
-}
+  ]; #++ [  
+    #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+    #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
 
+  
+  #];
+}
