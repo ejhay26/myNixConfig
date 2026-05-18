@@ -10,5 +10,6 @@
     phpExtensions.openssl
     php83
     php83Packages.composer
+    ionic-cli
   ];
 }
