@@ -15,6 +15,14 @@
       efi.canTouchEfiVariables = true;
     };
 
+    zramSwap = {
+      enable = true;
+      algorithm = "lz4";       # Options include "lz4", "zstd", "lzo"
+      memoryPercent = 50;      # Max RAM percentage ZRAM can use (e.g., 50%)
+      priority = 100;          # Higher priority tells the system to use ZRAM first
+    };
+
+
     kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
