@@ -5,7 +5,7 @@
     git
     brave
     vivaldi
-    librewolf
+#   librewolf
     fastfetch
     vscode-fhs
     figma-linux
