@@ -2,8 +2,8 @@
 spawn-at-startup "xwayland-satellite"
 
 // Shell & Panels
-spawn-at-startup "noctalia-shell"
-spawn-at-startup "quickshell" 
+// spawn-at-startup "noctalia-shell"
+// spawn-at-startup "quickshell" 
 // spawn-at-startup "waybar" "-c" "~/.config/waybar2/config" "-s" "~/.config/waybar2/style.css"
 // spawn-at-startup "awww" "daemon"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
