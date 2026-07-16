@@ -19,7 +19,7 @@
 
   # ========== DESKTOP ENVIRONMENT ==========
 
-  # services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.enable = true;
 
@@ -33,7 +33,7 @@
 
     plugins = [
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+#     inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
   };
 
