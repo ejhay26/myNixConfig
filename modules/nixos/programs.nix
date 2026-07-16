@@ -24,7 +24,7 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = [ "ventoy-1.1.05" ]; 
+      permittedInsecurePackages = [ "ventoy-1.1.05" "librewolf-151.0.2-1" ]; 
     };
   };
 
