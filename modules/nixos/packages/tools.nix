@@ -28,7 +28,7 @@
     gptfdisk
     dmg2img
     ngrok
-    docker
+    # docker
     samba
     gnirehtet
     guitarix
