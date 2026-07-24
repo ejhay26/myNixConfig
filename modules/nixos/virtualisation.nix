@@ -12,7 +12,7 @@
     };
 
     #  Waydroid
-     waydroid.= {
+     waydroid = {
       enable = true;
       package = pkgs.waydroid-nftables;
      };
