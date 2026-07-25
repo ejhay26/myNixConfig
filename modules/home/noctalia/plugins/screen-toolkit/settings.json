@@ -18,7 +18,7 @@
   "videoPath": "",
   "filenameFormat": "",
   "detectedRecorder": "",
-  "detectedCompositor": "niri",
+  "detectedCompositor": "other",
   "stateIsRunning": false,
   "stateActiveTool": "",
   "stateMirrorVisible": false,
