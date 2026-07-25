@@ -34,7 +34,7 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+#      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
 #     inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
   };
