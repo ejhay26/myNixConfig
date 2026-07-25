@@ -45,14 +45,19 @@
     #   };
 
     noctalia-shell = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # inir = {
+    #   url = "github:snowarch/iNiR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, noctalia-shell, niri, ... }@inputs: { # Note: kwin-effects-forceblur and kwin-effects-glass are currently not used, but I want to keep them here for future reference.
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, noctalia-shell, niri, inir, ... }@inputs: { # Note: kwin-effects-forceblur and kwin-effects-glass are currently not used, but I want to keep them here for future reference.
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -65,7 +70,12 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.terajaki = import ./home.nix;
-            extraSpecialArgs = { inherit inputs; }; # Recommended for home.nix
+            extraSpecialArgs = { 
+              inherit inputs; 
+              inir-fixed = inir.packages.x86_64-linux.default.overrideAttrs (oldAttrs: {
+                dontPatchShebangs = true;
+              });  
+            }; # Recommended for home.nix
             backupFileExtension = "backup";
           };
         }
