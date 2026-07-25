@@ -8,7 +8,7 @@
     openssl
     python3
     python313Packages.pip
-    pipx
+#    pipx
     tk
     clang
     cmake
