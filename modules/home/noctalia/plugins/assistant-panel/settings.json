@@ -1,4 +1,10 @@
 {
+  "maxHistoryLength": 100,
+  "panelDetached": false,
+  "panelPosition": "top",
+  "panelHeightRatio": 0.85,
+  "panelWidth": 520,
+  "scale": 1,
   "ai": {
     "provider": "google",
     "models": {},
@@ -14,13 +20,8 @@
   "translator": {
     "backend": "google",
     "deeplApiKey": "",
-    "realTimeTranslation": true
+    "realTimeTranslation": true,
+    "targetLanguage": "ja"
   },
-  "maxHistoryLength": 100,
-  "panelDetached": false,
-  "panelPosition": "top",
-  "panelHeightRatio": 0.85,
-  "panelWidth": 520,
-  "attachmentStyle": "connected",
-  "scale": 1
+  "attachmentStyle": "connected"
 }
