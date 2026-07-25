@@ -1,0 +1,63 @@
+-- =====================================================================
+--  config/plugins.lua — Plugin configuration (hyprbars, hyprexpo)
+--
+--  NOTE: Plugin loading itself is handled by NixOS/hyprpm.
+--  Only plugin *settings* belong here.
+--  Refer to updated Hyprland Lua plugin API docs when stabilised:
+--  https://wiki.hypr.land/Plugins/Using-Plugins/
+-- =====================================================================
+
+-- ── hyprbars ─────────────────────────────────────────────────────────
+-- hl.config({
+--     plugin = {
+--         hyprbars = {
+--             bar_height       = 20,
+--             bar_color        = "rgba(20, 20, 20, 0.8)",
+--             bar_part_of_window = true,
+--             bar_precedence   = true,
+--             col = { rounding = 8 },
+--             buttons = {
+--                 {
+--                     icon            = "",
+--                     action          = "exec, minimize",
+--                     hover_icon      = "",
+--                     box_color       = "rgba(255, 255, 0, 0.7)",
+--                     hover_box_color = "rgba(255, 255, 0, 1)",
+--                     box_size        = "10 4",
+--                     hover_box_size  = "10 10",
+--                 },
+--                 {
+--                     icon            = "",
+--                     action          = "togglefloating",
+--                     hover_icon      = "",
+--                     box_color       = "rgba(0, 255, 0, 0.7)",
+--                     hover_box_color = "rgba(0, 255, 0, 1)",
+--                     box_size        = "10 4",
+--                     hover_box_size  = "10 10",
+--                 },
+--                 {
+--                     icon            = "",
+--                     action          = "killactive",
+--                     hover_icon      = "",
+--                     box_color       = "rgba(255, 0, 0, 0.7)",
+--                     hover_box_color = "rgba(255, 0, 0, 1)",
+--                     box_size        = "10 4",
+--                     hover_box_size  = "10 10",
+--                 },
+--             },
+--         },
+--     },
+-- })
+
+-- ── hyprexpo ─────────────────────────────────────────────────────────
+-- hl.config({
+--     plugin = {
+--         hyprexpo = {
+--             columns          = 3,
+--             gap_size         = 5,
+--             bg_col           = "rgb(111111)",
+--             workspace_method = "center current",
+--             enable_gesture   = true,
+--         },
+--     },
+-- })
