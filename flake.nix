@@ -62,7 +62,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, noctalia-shell, niri, ... }@inputs: { # Note: kwin-effects-forceblur and kwin-effects-glass are currently not used, but I want to keep them here for future reference.
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, noctalia-shell, niri, caelestia, ... }@inputs: { # Note: kwin-effects-forceblur and kwin-effects-glass are currently not used, but I want to keep them here for future reference.
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
