@@ -9,7 +9,7 @@
     fastfetch
     vscode-fhs
     figma-linux
-    mongodb-compass
+#    mongodb-compass -- dependency failure
     libreoffice-qt6-fresh
     ttyper
     ani-cli
