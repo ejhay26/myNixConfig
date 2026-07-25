@@ -3,6 +3,8 @@
 {
   # ========== TIMEZONE & LOCALIZATION ==========
   time.timeZone = "Asia/Manila";
+  time.hardwareClockInLocalTime = true;
+
   # Alternatively: time.timeZone = "Europe/Amsterdam";
 
   # ========== INTERNATIONALISATION ==========
