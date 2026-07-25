@@ -98,7 +98,8 @@ in
 		# Noctalia Shell from flake input
 		# If the package attr differs, adjust accordingly (e.g. .noctalia-shell)
 		inputs.noctalia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
-		inputs.inir.packages.${pkgs.stdenv.hostPlatform.system}.default
+                inputs.caelestia.packages.${pkgs.stdenv.hostPlatform.system}.default
+		# inputs.inir.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 	# for waybar
 		lexend              # Required by that specific config
