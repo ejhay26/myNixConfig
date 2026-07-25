@@ -12,7 +12,7 @@ binds {
     Mod+Y { spawn "bash" "-c" "pkill waybar || waybar"; }
     
     //Shell commands
-    Mod+U { spawn "bash" "-c" "pkill noctalia-shell || noctalia-shell"; }
+    Mod+U { spawn "bash" "-c" "noctalia-shell ipc call bar toggle"; }
     Mod+Tab { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+W { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
     Mod+Period { spawn "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
