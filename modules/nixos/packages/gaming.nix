@@ -30,10 +30,17 @@
     # mcpelauncher-ui-qt   # GUI launcher (login with Google, download versions)
     # mcpelauncher-client  # CLI launcher (run a specific version directly)
     #
-    # OPTION B: Flatpak (more stable, already supported via services.flatpak.enable).
-    #   Run once after rebuild:
-    #     flatpak install flathub io.mrarm.mcpelauncher
-    #   Launch from app menu or: flatpak run io.mrarm.mcpelauncher
-    #   This is the upstream-recommended install method for non-Debian/Fedora distros.
+    # OPTION B: Flatpak (recommended — most stable on NixOS).
+    #   graphics.nix now includes the GPU driver fix so Flatpak uses host Mesa
+    #   instead of falling back to llvmpipe (which caused your crashes).
+    #   XWayland is also explicitly enabled there (required for EGLUT window).
+    #
+    #   Steps after rebuild:
+    #     1. flatpak install flathub io.mrarm.mcpelauncher
+    #     2. In the launcher UI: download Minecraft version 1.20.x specifically.
+    #        Do NOT download latest — 1.21.0+ requires OpenGL ES 3.1 which your
+    #        Intel HD 520 does not support (max is ES 3.0). That is what caused
+    #        the crash-after-minutes, not a NixOS config problem.
+    #     3. Launch: flatpak run io.mrarm.mcpelauncher
   ];
 }
