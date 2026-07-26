@@ -21,7 +21,10 @@
 
   # ========== DESKTOP ENVIRONMENT ==========
 
-  services.desktopManager.plasma6.enable = true;
+  # Plasma6 removed — saves ~3-4GB of KDE framework.
+  # SDDM runs standalone; Dolphin is installed directly as a package.
+  # Power management via power-profiles-daemon + upower in services/power.nix.
+  # services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.enable = true;
 
