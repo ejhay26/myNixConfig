@@ -6,7 +6,7 @@
     user = "terajaki";
     group = "users";
     enablePHP = true;
-    phpPackage = pkgs.php;
+    phpPackage = pkgs.php83; # Aligned with web.nix: php83 is the single PHP version in use
 
     virtualHosts."localhost" = {
       documentRoot = "/var/www/html";
