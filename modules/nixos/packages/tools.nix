@@ -8,7 +8,7 @@
 #   librewolf
     fastfetch
     vscode-fhs
-    figma-linux
+    # figma-linux removed: non-functional (Electron app with broken Figma API auth)
 #    mongodb-compass -- dependency failure
     libreoffice-qt6-fresh
     ttyper
