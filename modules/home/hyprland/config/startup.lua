@@ -1,11 +1,21 @@
 -- =====================================================================
 --  config/startup.lua — exec-once autostart entries
 -- =====================================================================
-hl.config(
-    {
-        exec = {
-            once= {
-            --"noctalia-shell",
+
+-- ── Active shell ──────────────────────────────────────────────────────
+-- Set this to "noctalia" or "caelestia" to choose which shell to autostart.
+-- Only one shell runs at a time.
+local active_shell = "caelestia"
+
+local shell_start = {
+    noctalia  = "noctalia-shell",
+    caelestia = "caelestia shell -d",
+}
+
+hl.config({
+    exec = {
+        once = {
+            shell_start[active_shell],
             "hyprpm reload",
             "wl-paste --type text --watch cliphist store",
             "wl-paste --type image --watch cliphist store",
