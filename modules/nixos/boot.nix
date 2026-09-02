@@ -53,4 +53,13 @@
     memoryPercent = 50;
     priority = 100;
   };
+
+  # Sync rEFInd configuration and Gruvbox theme assets to ESP during system rebuilds
+  system.activationScripts.refindConfig = ''
+    if [ -d /boot/EFI/refind ]; then
+      cp -f /home/terajaki/nixos/modules/nixos/refind/refind.conf /boot/EFI/refind/refind.conf
+      mkdir -p /boot/EFI/refind/gruvbox
+      cp -r -f /home/terajaki/nixos/modules/nixos/refind/gruvbox/* /boot/EFI/refind/gruvbox/
+    fi
+  '';
 }
