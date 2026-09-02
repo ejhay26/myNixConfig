@@ -12,15 +12,19 @@
         configurationLimit = 1;
       };
       timeout = 0;
-      efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = false;
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
 
+    consoleLogLevel = 0;
+
     kernelParams = [
       "quiet"
       "splash"
-      "rd.systemd.show_status=auto"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
       "udev.log_priority=3"
       "vt.global_cursor_default=0"
       "nowatchdog"
@@ -60,6 +64,8 @@
       cp -f /home/terajaki/nixos/modules/nixos/refind/refind.conf /boot/EFI/refind/refind.conf
       mkdir -p /boot/EFI/refind/gruvbox
       cp -r -f /home/terajaki/nixos/modules/nixos/refind/gruvbox/* /boot/EFI/refind/gruvbox/
+      mkdir -p /boot/EFI/BOOT
+      cp -f /boot/EFI/refind/refind_x64.efi /boot/EFI/BOOT/BOOTX64.EFI 2>/dev/null || true
     fi
   '';
 }
