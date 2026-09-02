@@ -24,11 +24,7 @@
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/windows" =
-    { device = "/dev/disk/by-uuid/01DCFF1F531ADA10";
-      fsType = "ntfs3";
-      options = [ "rw" "uid=1000" "gid=100" "nofail" "fmask=0022" "dmask=0022" ];
-    };
+
 
   swapDevices = [ ];
 
