@@ -9,6 +9,8 @@
     ./tools.nix
     ./graphics-libs.nix
     ./hyprland-packages.nix
+    ./niri-packages.nix
+    ./mangowc-packages.nix
   ];
 
   fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
