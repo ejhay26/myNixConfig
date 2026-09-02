@@ -17,6 +17,10 @@
     ani-cli
     mov-cli
     fzf
+    ripgrep
+    fd
+    unzip
+    tuigreet
     yazi
     dotool
     scrcpy
