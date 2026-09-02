@@ -55,13 +55,22 @@
     package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
   };
 
-  # MangoWC, Security & Keyring Utilities
+  # ========== STORAGE & DEVICE MOUNTING (MTP / ANDROID / USB) ==========
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+  services.devmon.enable = true;
+
+  # MangoWC, Security, Keyring & Storage Utilities
   environment.systemPackages = [
     pkgs.cage
     pkgs.seahorse
     pkgs.libsecret
     pkgs.gcr
     pkgs.hyprpolkitagent
+    pkgs.ntfs3g
+    pkgs.libmtp
+    pkgs.android-file-transfer
+    pkgs.kdePackages.kio-extras
     inputs.mangowc.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
