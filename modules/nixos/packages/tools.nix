@@ -28,6 +28,7 @@
     android-tools
     libmtp
     android-file-transfer
+    simple-mtpfs
     kdePackages.kio-extras
     seahorse
     libsecret
