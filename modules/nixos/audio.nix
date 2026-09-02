@@ -43,7 +43,7 @@
     zam-plugins      # ZamAudio: maximizer (ZaMaximX2)
     zita-convolver   # Convolver effect (room correction, impulse responses)
     libebur128       # Auto gain / level meter (loudness normalization)
-    mda-lv2          # MDA Bass: bass loudness plugin
+    mda_lv2          # MDA Bass: bass loudness plugin
     speexdsp         # Speech processor / noise suppressor
     soundtouch       # Pitch shift effect
   ];

@@ -10,5 +10,9 @@
     freetype
     libvorbis
     libogg
+
+    # Graphical Bootloader?
+    refind
+    efibootmgr
   ];
 }

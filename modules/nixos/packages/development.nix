@@ -15,5 +15,7 @@
     gnumake
     lld
     nodejs_24
+    android-studio
+    android-tools
   ];
 }

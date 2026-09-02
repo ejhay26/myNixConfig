@@ -5,7 +5,7 @@
     # which Electron/Ionic portable exes don't need. "stable" is sufficient and
     # saves ~800MB-1GB. "wine" was redundant as it's already included inside
     # wineWow64Packages.
-    wineWow64Packages.stable
+    # wineWow64Packages.stable
     mangohud
     # protonup
 

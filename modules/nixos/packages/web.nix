@@ -5,7 +5,7 @@
     # alongside php83. phpExtensions.* without a version prefix pull in a
     # different PHP version, causing two full PHP builds on disk. php83 with
     # its own extensions is the single source of truth.
-    (php83.withExtensions ({ all, ... }: with all; [
+    (php84.withExtensions ({ all, ... }: with all; [
       mysqli
       pdo
       pdo_mysql

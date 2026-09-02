@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 {
-  virtualisation = {
-    libvirtd.enable = true;
-    kvmgt.enable = true;
-    spiceUSBRedirection.enable = true;
+  # virtualisation = {
+  #   libvirtd.enable = true;
+  #   kvmgt.enable = true;
+  #   spiceUSBRedirection.enable = true;
 
     # Docker (rootless) — safe default: runs under your user, no root daemon.
     # "docker" group is in users.nix but rootless doesn't need it; harmless.
@@ -46,6 +46,6 @@
     # Manage: `docker logs minecraft-bedrock` / `docker stop minecraft-bedrock`
     # This is intentionally a runtime command, not a NixOS service, so you can
     # start/stop it on demand without a system rebuild.
-  };
-  programs.virt-manager.enable = true;
+#   };
+# #  programs.virt-manager.enable = true;
 }

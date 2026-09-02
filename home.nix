@@ -64,6 +64,7 @@ in
   };
 
 	home.pointerCursor = {
+		enable = true;
 		gtk.enable = true;
 		# x11.enable = true; # Uncomment if you use XWayland apps
 		package = pkgs.bibata-cursors;
@@ -98,7 +99,8 @@ in
 		# Noctalia Shell from flake input
 		# If the package attr differs, adjust accordingly (e.g. .noctalia-shell)
 		inputs.noctalia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
-                inputs.caelestia.packages.${pkgs.stdenv.hostPlatform.system}.default
+		# inputs.caelestia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.caelestia.inputs.caelestia-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
 		# inputs.inir.packages.${pkgs.stdenv.hostPlatform.system}.default
 
 	# for waybar
@@ -180,6 +182,9 @@ in
 
 		# kitty terminal link
 		".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/kitty_config";
+
+		# MangoWC link
+		".config/mango".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/mangowc";
 	};
 
 	# Waybar

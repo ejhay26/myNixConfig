@@ -45,24 +45,19 @@
     #   };
 
     noctalia-shell = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-   
-    caelestia = {
-      url = "github:caelestia-dots/shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # inir = {
-    #   url = "github:snowarch/iNiR";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    mangowc = {
+      url = "git+https://github.com/mangowm/mango.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, noctalia-shell, niri, caelestia, ... }@inputs: { # Note: kwin-effects-forceblur and kwin-effects-glass are currently not used, but I want to keep them here for future reference.
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, hyprland-plugins, noctalia-shell, niri, mangowc, ... }@inputs: { # Note: kwin-effects-forceblur and kwin-effects-glass are currently not used, but I want to keep them here for future reference. caelestia
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };

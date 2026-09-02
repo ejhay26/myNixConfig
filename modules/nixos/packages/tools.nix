@@ -8,6 +8,7 @@
 #   librewolf
     fastfetch
     vscode-fhs
+    antigravity-ide-fhs
     # figma-linux removed: non-functional (Electron app with broken Figma API auth)
 #    mongodb-compass -- dependency failure
     libreoffice-qt6-fresh
@@ -31,22 +32,23 @@
     # docker
     samba
     gnirehtet
-    guitarix
+    # guitarix
     # kde-rounded-corners
     # kdePackages.krdp
     mapscii
     browsh
     vesktop # = this is the modified discord
     discord
-    telegram-desktop
+    # telegram-desktop
     qbittorrent
     proton-vpn
     easyeffects
-    inkscape
+    # inkscape
     bibata-cursors
     papirus-icon-theme
     # thunar
     kdePackages.dolphin
+    kdePackages.kate
     mission-center
 
   ] ++ [

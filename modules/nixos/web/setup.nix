@@ -7,11 +7,12 @@
     # Ensure storage directory structure exists for login app
     "d /var/www/html/login/storage 0777 terajaki users -"
     "d /var/www/html/login/storage/students 0777 terajaki users -"
+    "d /home/terajaki/Documents 0755 terajaki users -"
     "d /home/terajaki/Documents/www 0755 terajaki users -"
   ];
 
   systemd.services.fix-www-permissions = {
-    description = "Fix /var/www permissions";
+    description = "Fix /var/www and /home/terajaki/Documents permissions";
     wantedBy = [ "multi-user.target" ];
     after = [ "local-fs.target" ];
     serviceConfig = {
@@ -21,6 +22,10 @@
     script = ''
       chown -R terajaki:users /var/www/html
       chmod -R 755 /var/www/html
+
+      if [ -d /home/terajaki/Documents ]; then
+        chown -R terajaki:users /home/terajaki/Documents
+      fi
 
       # Ensure storage directories exist and are writable
       mkdir -p /var/www/html/login/storage/students
