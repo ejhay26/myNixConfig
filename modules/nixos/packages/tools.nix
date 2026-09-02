@@ -26,6 +26,12 @@
     # wireshark - the package hash is currently broken, so it's commented out for now
     ntfs3g
     android-tools
+    libmtp
+    android-file-transfer
+    kdePackages.kio-extras
+    seahorse
+    libsecret
+    gcr
     gptfdisk
     dmg2img
     ngrok

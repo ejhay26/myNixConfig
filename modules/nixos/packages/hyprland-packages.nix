@@ -34,6 +34,8 @@
         kitty
         alacritty
         nwg-displays # manage monitors
+        hyprpolkitagent
+        cage
   ]; #++ [  
     #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
     #   inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo

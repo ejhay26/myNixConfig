@@ -60,20 +60,6 @@
   services.gvfs.enable = true;
   services.devmon.enable = true;
 
-  # MangoWC, Security, Keyring & Storage Utilities
-  environment.systemPackages = [
-    pkgs.cage
-    pkgs.seahorse
-    pkgs.libsecret
-    pkgs.gcr
-    pkgs.hyprpolkitagent
-    pkgs.ntfs3g
-    pkgs.libmtp
-    pkgs.android-file-transfer
-    pkgs.kdePackages.kio-extras
-    inputs.mangowc.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
-
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable the XDG Desktop Portal
