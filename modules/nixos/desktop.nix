@@ -13,25 +13,15 @@
   services.dbus.packages = [ pkgs.gcr pkgs.kdePackages.kio-extras ];
 
   # ========== DESKTOP ENVIRONMENT & GREETER ==========
-  # ReGreet: clean GTK greeter running under cage (mini Wayland compositor)
-  # No terminal flash, proper cursor, easy session dropdown
-  programs.regreet = {
+  # tuigreet: clean, beautiful TUI greeter for greetd styled in Gruvbox dark theme
+  services.greetd = {
     enable = true;
     settings = {
-      background = {
-        fit = "Cover";
-      };
-      GTK = {
-        cursor_theme_name = lib.mkForce "Bibata-Modern-Classic";
-        icon_theme_name = lib.mkForce "Papirus";
-        theme_name = lib.mkForce "Adwaita-dark";
-      };
-      commands = {
-        reboot = [ "systemctl" "reboot" ];
-        poweroff = [ "systemctl" "poweroff" ];
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --remember --remember-user-session --user-menu --kb-sessions 3 --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions --theme 'border=d79921;title=fabd2f;prompt=83a598;time=b8bb26;action=fe8019;button=fabd2f;container=282828;input=ebdbb2'";
+        user = "greeter";
       };
     };
-    cageArgs = [ "-s" "-m" "last" ];
   };
 
   # Expose Wayland session packages to greetd (Hyprland, Niri, MangoWC)
