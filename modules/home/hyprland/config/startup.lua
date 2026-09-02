@@ -6,9 +6,8 @@
 -- Autostart Noctalia shell (v5)
 
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
-    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE SSH_AUTH_SOCK GNOME_KEYRING_CONTROL GNOME_KEYRING_PID")
+    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SSH_AUTH_SOCK GNOME_KEYRING_CONTROL GNOME_KEYRING_PID")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("noctalia -d")
     hl.exec_cmd("easyeffects --gapplication-service")
