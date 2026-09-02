@@ -14,17 +14,54 @@
     zsh.enable = true;
     gamemode.enable = true;
 
-    # steam
-    # steam = {
-    #   enable = true;
-    #   gamescopeSession.enable = true; 
-    # };
+    # Global dynamic linker for unpatched Node/npm/ionic precompiled binaries
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+        zlib
+        fuse3
+        icu
+        zstd
+        openssl
+        curl
+        glibc
+        util-linux
+        libxml2
+        libunwind
+        glib
+        gdk-pixbuf
+        gtk3
+        cairo
+        pango
+        atk
+        nspr
+        nss
+        libdrm
+        mesa
+        alsa-lib
+        pulseaudio
+        libx11
+        libxcomposite
+        libxdamage
+        libxext
+        libxfixes
+        libxrandr
+        libxcb
+        libxrender
+        libxi
+        libxtst
+        libxcursor
+        libxinerama
+        libxkbcommon
+      ];
+    };
   };
 
   nixpkgs = {
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = [ "ventoy-1.1.05" "librewolf-151.0.2-1" ]; 
+      permittedInsecurePackages = [ "ventoy-1.1.05" "librewolf-151.0.2-1" "antigravity-ide-fhs" ]; 
     };
   };
 
