@@ -9,30 +9,37 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
   services.dbus.packages = [ pkgs.gcr pkgs.kdePackages.kio-extras ];
 
   # ========== DESKTOP ENVIRONMENT & GREETER ==========
-  # Enable SDDM with Wayland support (seamless DRM transitions, no terminal flashing, proper cursor & resolution)
-  services.displayManager.sddm = {
+  # ReGreet: clean GTK greeter running under cage (mini Wayland compositor)
+  # No terminal flash, proper cursor, easy session dropdown
+  programs.regreet = {
     enable = true;
-    wayland.enable = true;
     settings = {
-      Theme = {
-        CursorTheme = "Bibata-Modern-Classic";
+      background = {
+        fit = "Cover";
+      };
+      GTK = {
+        cursor_theme_name = lib.mkForce "Bibata-Modern-Classic";
+        icon_theme_name = lib.mkForce "Papirus";
+        theme_name = lib.mkForce "Adwaita-dark";
+      };
+      commands = {
+        reboot = [ "systemctl" "reboot" ];
+        poweroff = [ "systemctl" "poweroff" ];
       };
     };
+    cageArgs = [ "-s" "-m" "last" ];
   };
 
-  # Expose Wayland session packages to SDDM (Hyprland, Niri, MangoWC)
+  # Expose Wayland session packages to greetd (Hyprland, Niri, MangoWC)
   services.displayManager.sessionPackages = [
     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
     inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri
     inputs.mangowc.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-
-  services.greetd.enable = false;
-  programs.regreet.enable = false;
 
   services.getty.autologinUser = null;
   
