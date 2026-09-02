@@ -55,6 +55,7 @@ Entry point. Loads modules in this order: `general` → `decoration` → `animat
 
 ### `config/startup.lua`
 Autostart entries run once on login:
+- `noctalia -d` — Noctalia shell daemon (v5)
 - `hyprpm reload` — reload Hyprland plugin manager
 - `wl-paste` (text + image) piped to `cliphist` for clipboard history
 
@@ -66,11 +67,14 @@ See [Keybindings](#keybindings) below.
 
 ## Keybindings
 
-Shell IPC commands are declared as tables at the top of `binds.lua`. To change a shell target, edit the table — no need to touch individual binds.
+Shell IPC commands use Noctalia v5 (`noctalia msg <command>`).
 
 ```lua
-local noctalia  = { ipc = "noctalia-shell ipc call", ... }
-local caelestia = { global = "hyprctl dispatch global caelestia", ... }
+local shell_cmds = {
+    launcher   = "noctalia msg panel-toggle launcher",
+    wallpaper  = "noctalia msg panel-toggle wallpaper",
+    ...
+}
 ```
 
 ### Applications
@@ -82,7 +86,7 @@ local caelestia = { global = "hyprctl dispatch global caelestia", ... }
 | `SUPER + G` | Toggle scrolling layout |
 | `SUPER + Y` | Restart waybar |
 
-### Noctalia Shell
+### Noctalia Shell (v5)
 
 | Key | Action |
 |-----|--------|
@@ -92,19 +96,9 @@ local caelestia = { global = "hyprctl dispatch global caelestia", ... }
 | `SUPER + V` | Clipboard history |
 | `SUPER + U` | Toggle bar/panels |
 | `SUPER + I` | Settings |
-| `SUPER + ESCAPE` | System monitor |
+| `SUPER + ESCAPE` | System monitor / Settings |
 | `SUPER + L` | Lock screen |
 | `SUPER + M` | Session menu (power/logout) |
-
-### Caelestia Shell
-
-| Key | Action |
-|-----|--------|
-| `SUPER + R` | Start Caelestia |
-| `SUPER + Tab` | Launcher (dual-fires with Noctalia — only active shell responds) |
-| `CTRL + SUPER + SHIFT + R` | Kill Caelestia |
-
-> Noctalia and Caelestia are not run simultaneously. `SUPER + Tab` fires both shells' launcher IPC commands; whichever is running responds and the other silently no-ops.
 
 ### Screenshots
 

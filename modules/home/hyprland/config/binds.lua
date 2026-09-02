@@ -9,68 +9,39 @@ local ALT   = "ALT"
 local SHIFT = "SHIFT"
 local CTRL  = "CTRL"
 
--- ── Active shell selector ─────────────────────────────────────────────
--- Change this to "caelestia" to switch all shell binds over.
--- Must match the value set in startup.lua.
-local active_shell = "noctalia"
-
--- ── Shell IPC command maps ────────────────────────────────────────────
--- Each entry maps a logical action to the shell's actual IPC command.
--- Only the active_shell's commands are registered as binds.
+-- ── Noctalia v5 Shell IPC command maps ────────────────────────────────
+-- Maps logical actions to Noctalia v5 `noctalia msg` subcommands.
 local shell_cmds = {
-    noctalia = {
-        launcher   = "noctalia-shell ipc call launcher toggle",
-        wallpaper  = "noctalia-shell ipc call wallpaper toggle",
-        emoji      = "noctalia-shell ipc call launcher emoji",
-        monitor    = "noctalia-shell ipc call systemMonitor toggle",
-        settings   = "noctalia-shell ipc call settings toggle",
-        clipboard  = "noctalia-shell ipc call launcher clipboard",
-        bar        = "noctalia-shell ipc call bar toggle",
-        lock       = "noctalia-shell ipc call lockScreen lock",
-        session    = "noctalia-shell ipc call sessionMenu",
-    },
-    caelestia = {
-        launcher   = "hyprctl dispatch global caelestia:launcher",
-        wallpaper  = "hyprctl dispatch global caelestia:wallpaper",
-        emoji      = "hyprctl dispatch global caelestia:emoji",
-        monitor    = nil,  -- no caelestia equivalent yet
-        settings   = nil,  -- no caelestia equivalent yet
-        clipboard  = "hyprctl dispatch global caelestia:clipboard",
-        bar        = nil,  -- no caelestia equivalent yet; see sidebar comment below
-        lock       = "hyprctl dispatch global caelestia:lock",
-        session    = nil,  -- no caelestia equivalent yet
-        -- sidebar = "hyprctl dispatch global caelestia:sidebar",  -- future SUPER+U equivalent
-    },
+    launcher   = "noctalia msg panel-toggle launcher",
+    wallpaper  = "noctalia msg panel-toggle wallpaper",
+    emoji      = "noctalia msg panel-toggle launcher /emoji",
+    monitor    = "noctalia msg settings-toggle",
+    settings   = "noctalia msg settings-toggle",
+    clipboard  = "noctalia msg panel-toggle clipboard",
+    bar        = "noctalia msg bar-toggle",
+    lock       = "noctalia msg session lock",
+    session    = "noctalia msg panel-toggle session",
 }
 
--- Resolve active shell's command map
-local sh = shell_cmds[active_shell]
-
--- ── Helper: bind only if command exists for active shell ──────────────
-local function sbind(key, cmd)
-    if cmd ~= nil then
-        hl.bind(key, hl.dsp.exec_cmd(cmd))
-    end
-end
-
 -- ── Shell binds ───────────────────────────────────────────────────────
-sbind(SUPER .. " + Tab",    sh.launcher)
-sbind(SUPER .. " + W",      sh.wallpaper)
-sbind(SUPER .. " + period", sh.emoji)
-sbind(SUPER .. " + ESCAPE", sh.monitor)
-sbind(SUPER .. " + I",      sh.settings)
-sbind(SUPER .. " + V",      sh.clipboard)
-sbind(SUPER .. " + U",      sh.bar)
-sbind(SUPER .. " + L",      sh.lock)
-sbind(SUPER .. " + M",      sh.session)
+hl.bind(SUPER .. " + Tab",    hl.dsp.exec_cmd(shell_cmds.launcher))
+hl.bind(SUPER .. " + W",      hl.dsp.exec_cmd(shell_cmds.wallpaper))
+hl.bind(SUPER .. " + period", hl.dsp.exec_cmd(shell_cmds.emoji))
+hl.bind(SUPER .. " + ESCAPE", hl.dsp.exec_cmd(shell_cmds.monitor))
+hl.bind(SUPER .. " + I",      hl.dsp.exec_cmd(shell_cmds.settings))
+hl.bind(SUPER .. " + V",      hl.dsp.exec_cmd(shell_cmds.clipboard))
+hl.bind(SUPER .. " + U",      hl.dsp.exec_cmd(shell_cmds.bar))
+hl.bind(SUPER .. " + L",      hl.dsp.exec_cmd(shell_cmds.lock))
+hl.bind(SUPER .. " + M",      hl.dsp.exec_cmd(shell_cmds.session))
 
 -- ── App shortcuts ─────────────────────────────────────────────────────
-local screenshots_dir = "/home/$USER/Pictures/Screenshots"
+local screenshots_dir = (os.getenv("HOME") or "") .. "/Pictures/Screenshots"
 
 hl.bind(SUPER .. " + T",      hl.dsp.exec_cmd("kitty"))
 hl.bind(SUPER .. " + E",      hl.dsp.exec_cmd("dolphin"))
 hl.bind(SUPER .. " + G",      hl.dsp.exec_cmd("toggle-scrolling"))
 hl.bind(SUPER .. " + Y",      hl.dsp.exec_cmd("pkill waybar || waybar"))
+hl.bind(SUPER .. " + B",      hl.dsp.exec_cmd("brave"))
 
 -- ── Screenshots ───────────────────────────────────────────────────────
 hl.bind(ALT   .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m region -z -o "           .. screenshots_dir))
@@ -82,7 +53,7 @@ hl.bind(SUPER .. " + Q",                          hl.dsp.window.close())
 hl.bind(SUPER .. " + F",                          hl.dsp.window.fullscreen())
 hl.bind(SUPER .. " + SPACE",                      hl.dsp.window.float({ action = "toggle" }))
 hl.bind(SUPER .. " + " .. SHIFT .. " + SPACE",    hl.dsp.exec_cmd("hyprctl dispatch workspaceopt allfloat"))
-hl.bind(SUPER .. " + H",                          hl.dsp.exec_cmd("minimize"))
+hl.bind(SUPER .. " + H",                          hl.dsp.window.move({ workspace = "special:minimized" }))
 hl.bind(SUPER .. " + N",                          hl.dsp.workspace.toggle_special("minimized"))
 
 -- ── Hardware: brightness ──────────────────────────────────────────────
@@ -116,10 +87,10 @@ hl.bind(ALT .. " + J", hl.dsp.window.move({ direction = "l" }))
 hl.bind(ALT .. " + L", hl.dsp.window.move({ direction = "r" }))
 
 -- ── Accessibility: zoom ───────────────────────────────────────────────
-hl.bind(SUPER .. " + " .. SHIFT .. " + mouse_down",
-    hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.1')"))
 hl.bind(SUPER .. " + " .. SHIFT .. " + mouse_up",
-    hl.dsp.exec_cmd("hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.9) | if . < 1 then 1 else . end')"))
+    hl.dsp.exec_cmd("hyprctl eval \"hl.config({ cursor = { zoom_factor = $(hyprctl getoption cursor:zoom_factor -j | jq '.float * 1.25') } })\""))
+hl.bind(SUPER .. " + " .. SHIFT .. " + mouse_down",
+    hl.dsp.exec_cmd("hyprctl eval \"hl.config({ cursor = { zoom_factor = $(hyprctl getoption cursor:zoom_factor -j | jq '(.float * 0.8) | if . < 1 then 1 else . end') } })\""))
 
 -- ── Workspace switching (ALT + 1–0) ───────────────────────────────────
 for i = 1, 10 do

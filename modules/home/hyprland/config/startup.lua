@@ -3,25 +3,19 @@
 -- =====================================================================
 
 -- ── Active shell ──────────────────────────────────────────────────────
--- Set this to "noctalia" or "caelestia" to choose which shell to autostart.
--- Only one shell runs at a time.
-local active_shell = "caelestia"
+-- Autostart Noctalia shell (v5)
 
-local shell_start = {
-    noctalia  = "noctalia-shell",
-    caelestia = "caelestia shell -d",
-}
-
-hl.config({
-    exec = {
-        once = {
-            shell_start[active_shell],
-            "hyprpm reload",
-            "wl-paste --type text --watch cliphist store",
-            "wl-paste --type image --watch cliphist store",
-        },
-    },
-})
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
+    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("noctalia -d")
+    hl.exec_cmd("easyeffects --gapplication-service")
+    hl.exec_cmd("hyprpm reload")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+end)
 
 -- ── NixOS plugin loading ─────────────────────────────────────────────
 -- Plugin loading via hyprctl is NixOS-managed through the flake.
