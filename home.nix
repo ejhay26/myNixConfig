@@ -185,6 +185,9 @@ in
 
 		# MangoWC link
 		".config/mango".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/mangowc";
+
+		# Neovim config link
+		".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/modules/home/nvim";
 	};
 
 	# Waybar
