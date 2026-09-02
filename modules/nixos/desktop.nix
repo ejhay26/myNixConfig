@@ -3,30 +3,36 @@
 {
   # ========== TIMEZONE & LOCALIZATION ==========
   time.timeZone = "Asia/Manila";
-  time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = false;
 
-  # Alternatively: time.timeZone = "Europe/Amsterdam";
+  # ========== SECRET KEYRING & SECURITY ==========
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  services.dbus.packages = [ pkgs.gcr ];
 
-  # ========== INTERNATIONALISATION ==========
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true;
-  # };
+  # ========== DESKTOP ENVIRONMENT & GREETER ==========
+  # Enable SDDM with Wayland support (seamless DRM transitions, no terminal flashing, proper cursor & resolution)
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    settings = {
+      Theme = {
+        CursorTheme = "Bibata-Modern-Classic";
+      };
+    };
+  };
 
-  # ========== X11 KEYMAP ==========
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+  # Expose Wayland session packages to SDDM (Hyprland, Niri, MangoWC)
+  services.displayManager.sessionPackages = [
+    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
+    inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri
+    inputs.mangowc.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 
-  # ========== DESKTOP ENVIRONMENT ==========
-
-  # Plasma6 removed — saves ~3-4GB of KDE framework.
-  # SDDM runs standalone; Dolphin is installed directly as a package.
-  # Power management via power-profiles-daemon + upower in services/power.nix.
-  # services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.greetd.enable = false;
+  programs.regreet.enable = false;
 
   services.getty.autologinUser = null;
   
@@ -49,6 +55,15 @@
     package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
   };
 
+  # MangoWC, Security & Keyring Utilities
+  environment.systemPackages = [
+    pkgs.cage
+    pkgs.seahorse
+    pkgs.libsecret
+    pkgs.gcr
+    pkgs.hyprpolkitagent
+    inputs.mangowc.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
