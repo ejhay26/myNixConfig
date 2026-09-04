@@ -1,0 +1,254 @@
+config_version = 13
+
+[bar]
+order = [ "default", "left_frame", "right_frame", "bottom_frame" ]
+
+    [bar.bottom_frame]
+    center = []
+    enabled = true
+    end = []
+    margin_ends = 0
+    panel_overlap = 3
+    position = "bottom"
+    start = []
+    thickness = 12
+
+    [bar.default]
+    border = "surface_variant"
+    capsule_thickness = 0.74999998696148396
+    center = [ "audio_visualizer", "clock", "privacy" ]
+    contact_shadow = true
+    end = [ "media", "taskbar", "tray", "session" ]
+    margin_ends = 0
+    padding = 12
+    panel_overlap = 3
+    start = [ "launcher", "workspaces", "active_window" ]
+    thickness = 30
+    widget_spacing = 12
+
+    [bar.left_frame]
+    center = []
+    enabled = true
+    end = []
+    margin_ends = 0
+    panel_overlap = 3
+    position = "left"
+    start = []
+    thickness = 12
+
+    [bar.right_frame]
+    center = []
+    enabled = true
+    end = [ "ram", "cpu", "power_profile", "battery" ]
+    margin_ends = 0
+    panel_overlap = 3
+    position = "right"
+    start = [ "network", "bluetooth", "brightness", "volume", "notifications", "clipboard" ]
+    thickness = 30
+    widget_spacing = 12
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[dock]
+reserve_space = false
+smart_auto_hide = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 640.0
+    cy = 842.0
+    output = "HDMI-A-1"
+    placement_height = 1024.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
+    box_height = 196.0
+    box_width = 727.0
+    cx = 766.99951171875
+    cy = 652.0001220703125
+    output = "WL-1"
+    placement_height = 834.0
+    placement_width = 1534.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@WL-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 800.0
+    cy = 718.0
+    output = "eDP-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugins]
+enabled = []
+
+[shell]
+corner_radius_scale = 1.2500000186264515
+font_family = "JetBrainsMono NF"
+panel_anchor_bar = "default"
+
+    [shell.animation]
+    speed = 0.65000000968575478
+
+    [shell.launcher]
+    app_grid = true
+    pinned = [ "org.vinegarhq.Sober", "brave-browser", "discord" ]
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    floating_offset = 0
+    launcher_placement = "attached"
+    launcher_position = "auto"
+    open_near_click_clipboard = true
+    open_near_click_control_center = true
+    open_near_click_wallpaper = true
+    transparency_mode = "glass"
+
+    [shell.screenshot]
+    directory = "/home/terajaki/Pictures/Screenshots"
+
+    [shell.shadow]
+    alpha = 0.46999998949468136
+
+[theme]
+builtin = "Gruvbox"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "hyprland", "kitty", "labwc", "mango", "niri", "qt" ]
+
+[wallpaper]
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/terajaki/Pictures/Wallpapers/pexels-eberhardgross-1303431.jpg"
+
+    [wallpaper.last]
+    path = "/home/terajaki/Pictures/Wallpapers/pexels-eberhardgross-1303431.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/terajaki/Pictures/Wallpapers/pexels-eberhardgross-1303431.jpg"
+
+[widget.battery]
+display_mode = "graphic"
+show_label = false
+
+[widget.bluetooth]
+hide_when_no_connected_device = true
+
+[widget.brightness]
+show_label = false
+
+[widget.clock]
+anchor = true
+font_family = "JetBrainsMono Nerd Font Mono"
+font_weight = 700
+format = "{:%I:%M %p %B %d, %Y}"
+timezone = "Asia/Manila"
+
+[widget.cpu]
+label_show_units = false
+
+[widget.launcher]
+custom_image_colorize = true
+glyph = "snowflake"
+
+[widget.media]
+artist_first = true
+hide_when_no_media = true
+max_length = 253
+show_progress = true
+
+[widget.network]
+show_label = false
+show_vpn_label = true
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.ram]
+label_show_units = false
+
+[widget.sysmon]
+stat = "ram_used"
+
+[widget.tray]
+drawer = true
+hide_passive = false
+match_adjacent_spacing = true
+
+[widget.volume]
+show_label = false
