@@ -58,14 +58,14 @@
     priority = 100;
   };
 
-  # Sync rEFInd configuration and Gruvbox theme assets to ESP during system rebuilds
-  system.activationScripts.refindConfig = ''
-    if [ -d /boot/EFI/refind ]; then
-      cp -f /home/terajaki/nixos/modules/nixos/refind/refind.conf /boot/EFI/refind/refind.conf
-      mkdir -p /boot/EFI/refind/gruvbox
-      cp -r -f /home/terajaki/nixos/modules/nixos/refind/gruvbox/* /boot/EFI/refind/gruvbox/
-      mkdir -p /boot/EFI/BOOT
-      cp -f /boot/EFI/refind/refind_x64.efi /boot/EFI/BOOT/BOOTX64.EFI 2>/dev/null || true
-    fi
-  '';
+#  # Sync rEFInd configuration and Gruvbox theme assets to ESP during system rebuilds
+#  system.activationScripts.refindConfig = ''
+#    if [ -d /boot/EFI/refind ]; then
+#      cp -f /home/terajaki/nixos/modules/nixos/refind/refind.conf /boot/EFI/refind/refind.conf
+#      mkdir -p /boot/EFI/refind/gruvbox
+#      cp -r -f /home/terajaki/nixos/modules/nixos/refind/gruvbox/* /boot/EFI/refind/gruvbox/
+#      mkdir -p /boot/EFI/BOOT
+#      cp -f /boot/EFI/refind/refind_x64.efi /boot/EFI/BOOT/BOOTX64.EFI 2>/dev/null || true
+#    fi
+#  '';
 }
