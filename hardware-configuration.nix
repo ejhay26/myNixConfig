@@ -20,10 +20,16 @@
     };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b1ba2ea9-2f76-495d-8019-fc15cccf8144";
+    { device = "/dev/disk/by-uuid/fe0bed69-514e-4328-8d0e-eed3ad9bfb01";
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/apfs" =
+    { device = "dev/disk/by-uuid/e628c32d-18c9-4be3-a757-6ad071a37f2d";
+      fsType = "fuse.apfs-fuse";
+      noCheck = true;
+      options = [ "allow_other" "vol=0" "uid=1000" "gid=100" ];
+    }; 
 
 
   swapDevices = [ ];
