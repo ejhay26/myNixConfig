@@ -57,8 +57,14 @@
     # ========== WEB SERVER & SETUP ==========
     # Apache/PHP configuration, virtual hosts, web directories
     ./modules/nixos/web
+
+    # Custom out-of-tree kernel modules
+    ./modules/nixos/aic8800.nix
   ];
 
   # System state version (don't change unless upgrading NixOS)
   system.stateVersion = "25.11";
+
+  # Enable NTFS and APFS support to mount Windows and MacOS drives
+  boot.supportedFilesystems = [ "ntfs" "apfs" ];
 }
