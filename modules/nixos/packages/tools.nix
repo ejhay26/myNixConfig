@@ -4,6 +4,7 @@
     neovim
     wget
     git
+    gh
     brave
     vivaldi
 #   librewolf
@@ -30,6 +31,7 @@
     exfatprogs
     # wireshark - the package hash is currently broken, so it's commented out for now
     ntfs3g
+    apfs-fuse
     android-tools
     libmtp
     android-file-transfer
