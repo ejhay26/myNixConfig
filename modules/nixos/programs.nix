@@ -10,6 +10,11 @@
       nix-direnv.enable = true;
     };
 
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
     gpu-screen-recorder.enable = true;
     zsh.enable = true;
     gamemode.enable = true;
@@ -54,6 +59,10 @@
         libxcursor
         libxinerama
         libxkbcommon
+        fontconfig
+        keyutils
+        webkitgtk_4_1
+        libepoxy
       ];
     };
   };
@@ -65,8 +74,11 @@
     };
   };
 
-  services = {
-    flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "org.vinegarhq.Sober"
+    ];
   };
 
   nix = {
