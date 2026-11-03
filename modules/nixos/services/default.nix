@@ -6,6 +6,7 @@
     ./databases.nix
     ./udev.nix
     ./power.nix
+    ./network.nix
   ];
 }
 
