@@ -20,4 +20,8 @@
   # ========== MISC NETWORKING ==========
   systemd.services.NetworkManager-wait-online.enable = false;
   services.journald.extraConfig = "SystemMaxUse=50M";
+
+
+  # ===============USB===================
+  hardware.usb-modeswitch.enable = true;
 }
