@@ -16,7 +16,7 @@ binds {
     Mod+Tab { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+W { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
     Mod+Period { spawn "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
-    Mod+Escape { spawn "noctalia-shell" "ipc" "call" "systemMonitor" "toggle"; }
+    Mod+Escape { spawn "missioncenter"; }
     Mod+I { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
     Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
     
